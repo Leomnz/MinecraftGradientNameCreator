@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -13,14 +14,71 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@font-face {
+  font-family: 'minecraftregular';
+  src: url('minecraftregular-bmg3-webfont.woff2') format('woff2'),
+  url('minecraftregular-bmg3-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+.minecraft_container{
+  color: white;
+}
+.hex_container{
+  color:white;
+}
+
+
+.text_container{
+  background: black;
+  font-family: minecraftregular, serif;
+  flex-direction: row;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.letter_container{
+}
+.output_container{
+  font-size: calc(25px + 2vmin);
+  flex-direction: column;
+  display: flex;
+}
+.title{
+  font-size: calc(25px + 2vmin);
+  font-family: Verdana;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.output_header{
+  color: lightblue;
+  font-family: Verdana;
+  font-size: calc(10px + 1vmin);
+}
+.app_box {
+  background-color: #121212;
+}
+
+.header {
+  background-color: #282828;
+}
+
+.textbox {
+  border-color: white;
+}
+
+.footer{
+  margin-top: 0.5rem;
+  font-family: Verdana;
+  padding: 0.5rem;
+  background-color: #282828;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   color: white;
 }
 
@@ -28,11 +86,7 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.space{
+  width: 10px;
 }
+
