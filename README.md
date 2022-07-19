@@ -1,6 +1,6 @@
 # View Live Preview Here: 
 
-https://tangerine-hotteok-1ea6b2.netlify.app/
+https://minecraftgradient.netlify.app/
 
 ## Instructions
 Select two colors using the color pickers. Then type in text to see a live preview. This will generate a hex code and an additional output the minecraft uses.
