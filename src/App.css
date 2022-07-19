@@ -39,11 +39,7 @@
   justify-content: center;
 }
 .letter_container{
-}
-.output_container{
-  font-size: calc(25px + 2vmin);
-  flex-direction: column;
-  display: flex;
+  font-size: calc(35px + 2vmin);
 }
 .title{
   font-size: calc(25px + 2vmin);
@@ -64,11 +60,10 @@
 
 .header {
   background-color: #282828;
+  position: fixed;
+  top: 0;
 }
 
-.textbox {
-  border-color: white;
-}
 
 .footer{
   margin-top: 0.5rem;

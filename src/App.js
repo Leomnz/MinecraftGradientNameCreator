@@ -1,24 +1,20 @@
 import './App.css';
 import {ColorPicker, useColor} from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-import {AppBar, Box, Container, Grid, Paper, styled, TextField, Toolbar, makeStyles} from "@material-ui/core";
+import {AppBar, Box, Container, Grid, styled, TextField, Toolbar} from "@mui/material";
 import {useState} from "react";
 import {AiOutlineCopyrightCircle} from "react-icons/ai";
 
 
 
 /*
-
-Make it look good https://mctools.org
-Make it special characters &k &l &u
-
+Issues:
+special characters support: &k &l &u
+output and preview scroll off-screen
+padding between header and top rgb
+header bar is not fixed
  */
 
-const useStyles = makeStyles({
-    input: {
-        color: "grey"
-    }
-});
 
 function dv(color1,color2,word){
     // function that returns the slope of two vectors (color1,color2)
@@ -61,7 +57,7 @@ function dv(color1,color2,word){
 
     function componentToHex(c) {
         var hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
+        return hex.length === 1 ? "0" + hex : hex;
     }
 
     function rgbToHex(r, g, b) {
@@ -97,7 +93,25 @@ function dv(color1,color2,word){
 
 }
 
-
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: 'lightblue',
+    },
+    '& .MuiInput-underline:after': {
+        borderBottomColor: 'lightblue',
+    },
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: '#282828',
+        },
+        '&:hover fieldset': {
+            borderColor: '#454545',
+        },
+        '&.Mui-focused fieldset': {
+            borderColor: 'lightblue',
+        },
+    },
+});
 
 export default function App() {
     const [color1, setColor1] = useColor("hex", "#ff0000");
@@ -106,7 +120,6 @@ export default function App() {
     const onTextChange = (e: any) => setWord(e.target.value);
 
     const output = dv(color1,color2,word)
-    const classes = useStyles();
 
     return (
         <Box>
@@ -114,14 +127,14 @@ export default function App() {
                 <Toolbar className={"header"}>{<p className={"title"}>Gradient Maker</p>}</Toolbar>
             </AppBar>
             <Container className="app_box" maxWidth="xl">
-                <Box display="flex">
-                    <Grid container justify="space-evenly" columns={2} row={1}>
-                        <Grid>
+                <Box>
+                    <Grid container spacing={2}>
+                        <Grid item xs={6}>
                             <ColorPicker height={400} width={700}
                                          color={color1}
                                          onChange={setColor1} hideHSV dark/>
                         </Grid>
-                        <Grid>
+                        <Grid item xs={6}>
                             <ColorPicker height={400} width={700}
                                          color={color2}
                                          onChange={setColor2} hideHSV dark/>
@@ -129,22 +142,18 @@ export default function App() {
                     </Grid>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Box component="form" sx={{
-                                '& > :not(style)': { m: 1, width: '25ch' },
-                            }}>
+                            <Box component="form">
                                 <p className="output_header">Input Text:</p>
-                                <TextField className="textbox" inputProps={{ className: classes.input }} color="primary" focused margin="normal" fullWidth variant="outlined" value={word}
+                                <CssTextField sx={{ input: { color: 'white'}}} margin="normal" fullWidth variant="outlined" value={word}
                                            onChange={onTextChange} />
                             </Box>
                         </Grid>
                         {output}
                     </Grid>
                 </Box>
-                const Footer = () => (
                 <div className="footer">
                     <p> <AiOutlineCopyrightCircle /> 2022 Leo Adams & John Stromberg</p>
                 </div>
-                );
             </Container>
         </Box>
     );
