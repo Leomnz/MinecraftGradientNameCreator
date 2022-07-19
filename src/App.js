@@ -13,6 +13,7 @@ special characters support: &k &l &u
 output and preview scroll off-screen
 padding between header and top rgb
 header bar is not fixed
+1080p has bad scaling
  */
 
 
